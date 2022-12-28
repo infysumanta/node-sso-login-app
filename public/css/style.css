@@ -54,3 +54,14 @@
 main > .container {
   padding: 60px 15px 0;
 }
+
+.app-list-desc {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  margin: 0;
+}
+
+.my-apps-item {
+  cursor: pointer;
+}

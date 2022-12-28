@@ -44,11 +44,13 @@ passportInit(passport);
 app.use((req, res, next) => {
   res.locals.session = req.session;
   res.locals.user = req.user;
+  res.locals.user.fullname = req.user.firstName + " " + req.user.lastName;
   next();
 });
 
 app.use("/", require("./routes/homeRoutes"));
 app.use("/auth", require("./routes/authRoutes"));
-app.use("/user", require("./routes/userRoutes"));
+app.use("/users", require("./routes/userRoutes"));
+app.use("/apps", require("./routes/appRoutes"));
 
 module.exports = app;

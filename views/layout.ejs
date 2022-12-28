@@ -53,7 +53,16 @@
                     >Home</a
                   >
                 </li>
-
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="/users"
+                    >Dashboard</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="/apps/myapp"
+                    >My Apps</a
+                  >
+                </li>
                 <% if(!user){%>
                 <li class="nav-item">
                   <a class="nav-link" href="/auth/login">Login</a>
@@ -63,13 +72,40 @@
                 </li>
                 <% } else { %>
 
-                <li class="nav-item">
-                  <form id="logout" method="post" action="/auth/logout">
-                    <a class="nav-link" href="/auth/logout" onClick="logout()"
-                      >Logout</a
-                    >
-                  </form>
+                <li class="nav-item dropdown text-end">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <%= user.fullname%>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="/users/account">Account</a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" href="/users/setting"
+                        >Settings</a
+                      >
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <form id="logout" method="post" action="/auth/logout">
+                        <a
+                          class="dropdown-item"
+                          href="/auth/logout"
+                          onClick="logout()"
+                          >Logout</a
+                        >
+                      </form>
+                    </li>
+                  </ul>
                 </li>
+
                 <% }%>
               </ul>
             </div>
