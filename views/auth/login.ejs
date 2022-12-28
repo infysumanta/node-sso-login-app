@@ -1,1 +1,32 @@
-login
+<div class="card w-50 m-auto mt-5">
+  <div class="card-body">
+    <% if(messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%= messages.error %></div>
+    <% } %> <% if(messages.success) { %>
+    <div class="alert alert-success" role="alert"><%= messages.success %></div>
+    <% } %>
+    <form id="formLogin" method="post" action="/auth/login">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          value="<%=messages.email%>"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          value="<%=messages.password%>"
+        />
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary btn-lg" type="submit">Log in</button>
+      </div>
+    </form>
+  </div>
+</div>

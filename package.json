@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
+    "watch": "concurrently \"npm run mix\" \"npm run dev\"",
+    "mix": "mix watch",
     "start": "node index.js"
   },
   "repository": {
@@ -20,7 +22,15 @@
   "homepage": "https://github.com/infysumanta/node-sso-login-app#readme",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
-    "nodemon": "^2.0.20"
+    "axios": "^1.2.1",
+    "clientjs": "^0.2.1",
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^6.0.49",
+    "nodemon": "^2.0.20",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.57.1",
+    "sass-loader": "^13.2.0"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
@@ -34,6 +44,8 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
     "moment": "^2.29.4",
-    "mongoose": "^6.8.1"
+    "mongoose": "^6.8.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   }
 }

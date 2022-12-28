@@ -1,1 +1,64 @@
-register
+<div class="card w-50 m-auto mt-5">
+  <div class="card-header">
+    <h3>Create your Account</h3>
+  </div>
+  <div class="card-body">
+    <% if(messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%= messages.error %></div>
+    <% } %> <% if(messages.success) { %>
+    <div class="alert alert-success" role="alert"><%= messages.success %></div>
+    <% } %>
+    <form id="formRegister" method="post" action="/auth/register">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">First Name</label>
+        <input
+          type="text"
+          name="firstName"
+          class="form-control"
+          value="<%=messages.firstName%>"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          class="form-control"
+          value="<%=messages.lastName%>"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          value="<%=messages.username%>"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          value="<%=messages.email%>"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          value="<%=messages.password%>"
+        />
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-success btn-lg" type="submit">
+          Create Account
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
