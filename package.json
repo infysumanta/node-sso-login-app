@@ -1,0 +1,39 @@
+{
+  "name": "sso-login-app",
+  "version": "1.0.0",
+  "description": "Node app for Single Sign-On application like facebook and google auth login",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infysumanta/node-sso-login-app.git"
+  },
+  "keywords": [],
+  "author": "Sumanta Kabiraj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/infysumanta/node-sso-login-app/issues"
+  },
+  "homepage": "https://github.com/infysumanta/node-sso-login-app#readme",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "moment": "^2.29.4",
+    "mongoose": "^6.8.1"
+  }
+}
