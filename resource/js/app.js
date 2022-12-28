@@ -16,6 +16,7 @@ saveApp.addEventListener("click", async (evt) => {
   if (data.success) {
     toastr.success(data.message);
     createAppModal.hide();
+    location.reload();
   } else {
     toastr.error("data", data.message);
   }

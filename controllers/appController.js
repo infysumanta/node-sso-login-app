@@ -3,8 +3,11 @@ const App = require("./../models/app.schema");
 exports.myApps = async (req, res) => {
   const page = req.query.page || 1;
   const perPage = 9;
-  const skip = (page - 1) * perPage + 1;
-  const apps = await App.find().skip(skip).limit(perPage);
+  const skip = (page - 1) * perPage;
+  const apps = await App.find({ createdBy: req.user._id })
+    .sort({ _id: -1 })
+    .skip(skip)
+    .limit(perPage);
   res.render("apps/my_apps", {
     apps: apps,
     page: page,
@@ -23,7 +26,10 @@ exports.singleApps = async (req, res) => {
 exports.saveApp = async (req, res) => {
   try {
     const { app_name } = req.body;
-    const isNameExist = await App.exists({ app_name: app_name });
+    const isNameExist = await App.exists({
+      app_name: app_name,
+      createdBy: req.user._id,
+    });
 
     if (isNameExist) {
       return res.json({
@@ -36,6 +42,7 @@ exports.saveApp = async (req, res) => {
     const app = new App({
       app_name: app_name,
       app_secret: app_secret,
+      createdBy: req.user._id,
     });
     await app.save();
     res.json({
@@ -56,6 +63,7 @@ exports.changeMode = async (req, res) => {
     const app_id = req.params.app_id;
     const app = await App.findById(app_id);
     app.app_mode = app.app_mode === "live" ? "development" : "live";
+
     await app.save();
     res.redirect(`/apps/myapp/${app_id}`);
   } catch (error) {

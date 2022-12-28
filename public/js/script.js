@@ -44,6 +44,7 @@ saveApp.addEventListener("click", /*#__PURE__*/function () {
           if (data.success) {
             toastr__WEBPACK_IMPORTED_MODULE_0___default().success(data.message);
             createAppModal.hide();
+            location.reload();
           } else {
             toastr__WEBPACK_IMPORTED_MODULE_0___default().error("data", data.message);
           }
