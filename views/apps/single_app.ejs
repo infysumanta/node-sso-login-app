@@ -1,1 +1,166 @@
-single apps
+<div class="card shadow-sm mt-3">
+  <div class="card-body p-2">
+    <div class="row">
+      <div class="col px-3">
+        <h4 class="text-capitalize">
+          <%= app.app_name%> (<%= app.app_mode === "live" ?
+          "Development":"Production"%>)
+        </h4>
+      </div>
+      <div class="col text-end">
+        <form action="/apps/myapp/<%= app.id %>/changeMode" method="post">
+          <button
+            class="btn <%= app.app_mode === 'live' ? 'btn-primary' :'btn-success' %> btn-sm"
+            type="submit"
+          >
+            Change Mode to <%= app.app_mode === "live" ? "Development"
+            :"Production"%>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm mt-3 p-3" style="min-height: 300px">
+  <div class="card-body p-2">
+    <div class="row">
+      <div class="col-md-2 text-center">
+        <img
+          src="/img/empty.png"
+          height="120px"
+          width="120px"
+          alt="empty item"
+        />
+      </div>
+      <div class="col-md-10">
+        <form
+          class="row"
+          method="post"
+          action="/apps/myapp/<%= app.id %>/update"
+        >
+          <div class="col-md-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">App Id</span>
+              <input
+                type="text"
+                class="form-control"
+                value="<%= app.id %>"
+                readonly
+                onclick="copy('<%= app.id %>'); toastr.success('App Id Copied')"
+              />
+
+              <span
+                class="input-group-text"
+                style="cursor: pointer"
+                onclick="copy('<%= app.id %>'); toastr.success('App Id Copied')"
+              >
+                <i class="bi bi-clipboard"></i>
+              </span>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Display Name</span>
+              <input
+                type="text"
+                name="app_name"
+                class="form-control"
+                value="<%= app.app_name %>"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">App Domain</span>
+              <input
+                type="text"
+                class="form-control"
+                value="<%= app.app_domain %>"
+                name="app_domain"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">Category</span>
+              <select
+                class="form-select"
+                name="category"
+                value="<%= app.category %>"
+              >
+                <option value="category 1">Category 1</option>
+                <option value="category 2">Category 2</option>
+                <option value="category 3">Category 3</option>
+                <option value="category 4">Category 4</option>
+                <option value="category 5">Category 5</option>
+                <option value="category 6">Category 6</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">App Secret</span>
+              <input
+                type="password"
+                class="form-control"
+                id="app_secret"
+                value="<%= app.app_secret %>"
+                readonly
+              />
+              <span class="input-group-text" style="cursor: pointer" onclick="">
+                <i
+                  class="bi bi-eye-fill"
+                  id="showSecret"
+                  onClick="viewSecret(true)"
+                ></i>
+                <i
+                  class="bi bi-eye-slash-fill d-none"
+                  id="hideSecret"
+                  onClick="viewSecret(false)"
+                ></i>
+              </span>
+              <span
+                class="input-group-text"
+                onclick="copy('<%= app.app_secret %>'); toastr.success('App Secret Copied')"
+              >
+                <i class="bi bi-clipboard"></i>
+              </span>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Conact Email</span>
+              <input
+                type="text"
+                class="form-control"
+                name="contact_email"
+                value="<%= app.contact_email %>"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Privacy Policy Url</span>
+              <input
+                type="text"
+                class="form-control"
+                name="privacy_policy_url"
+                value="<%= app.privacy_policy_url %>"
+              />
+            </div>
+
+            <div class="d-grid gap-2">
+              <button class="btn btn-success">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function viewSecret(state) {
+    if (!state) {
+      document.getElementById("hideSecret").classList.add("d-none");
+      document.getElementById("showSecret").classList.remove("d-none");
+      document.getElementById("app_secret").type = "password";
+    } else {
+      document.getElementById("showSecret").classList.add("d-none");
+      document.getElementById("hideSecret").classList.remove("d-none");
+      document.getElementById("app_secret").type = "text";
+    }
+  }
+</script>

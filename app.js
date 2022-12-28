@@ -52,5 +52,6 @@ app.use("/", require("./routes/homeRoutes"));
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/users", require("./routes/userRoutes"));
 app.use("/apps", require("./routes/appRoutes"));
+app.use("/sso/auth", require("./routes/ssoAuthRoutes"));
 
 module.exports = app;

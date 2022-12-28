@@ -25,6 +25,7 @@
     "axios": "^1.2.1",
     "clientjs": "^0.2.1",
     "concurrently": "^7.6.0",
+    "copy-to-clipboard": "^3.3.3",
     "cross-env": "^7.0.3",
     "laravel-mix": "^6.0.49",
     "nodemon": "^2.0.20",
@@ -46,6 +47,7 @@
     "moment": "^2.29.4",
     "mongoose": "^6.8.1",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "toastr": "^2.1.4"
   }
 }
