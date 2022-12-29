@@ -1,23 +1,22 @@
-// Demo Url
-// http://localhost:5000/sso/auth/authenticate
-// ?app_id=63ac989b3a899011c0b2b0be
-// &redirect_url=https://localhost:3000/auth/success
-// &from_url=https://localhost:3000/auth/login
-// &failed_url=https://localhost:3000/auth/failed
-// &secure_hash=$2a$10$R94UJRhniVMJwUohWA1JUeb22FDGJ4gz5I89DnRM2pXlbXDYDIs8a
-
 const { encrypt, decrypt } = require("../config/crypto");
+const App = require("./../models/app.schema");
 
-exports.ssoAuthLogin = (req, res) => {
-  const { app_id, redirect_url, from_url, failed_url, secure_hash } = req.query;
-  const data = req.query;
-  const app_secret = "efa517af-361a-4215-bd8d-58929dbf5917";
-  const decryptor = decrypt(app_secret);
-  data.secure_hash_data = JSON.parse(decryptor(secure_hash));
-  res.send(data);
+exports.ssoAuthLogin = async (req, res) => {
+  // res.json(req.apps);
+  res.render("sso/success", { layout: "sso/layout", apps: req.apps });
+  // res.render("sso/failure", { layout: "sso/layout", apps: req.apps });
 };
 
 exports.testSSOAuthLogin = async (req, res) => {
+  // http://localhost:5000/sso/auth/authenticate?app_id=63ac989b3a899011c0b2b0be&redirect_url=https://localhost:3000/auth/success&from_url=https://localhost:3000/auth/login&failed_url=https://localhost:3000/auth/failed&secure_hash=$2a$10$R94UJRhniVMJwUohWA1JUeb22FDGJ4gz5I89DnRM2pXlbXDYDIs8a
+  // Demo Url
+  // http://localhost:5000/sso/auth/authenticate
+  // ?app_id=63ac989b3a899011c0b2b0be
+  // &redirect_url=https://localhost:3000/auth/success
+  // &from_url=https://localhost:3000/auth/login
+  // &failed_url=https://localhost:3000/auth/failed
+  // &secure_hash=$2a$10$R94UJRhniVMJwUohWA1JUeb22FDGJ4gz5I89DnRM2pXlbXDYDIs8a
+
   const baseUrl = "http://localhost:5000/sso/auth/authenticate";
   const app_id = "63ac989b3a899011c0b2b0be";
   const app_secret = "efa517af-361a-4215-bd8d-58929dbf5917";
@@ -36,5 +35,3 @@ exports.testSSOAuthLogin = async (req, res) => {
   // res.send(secure_hash);
   res.redirect(fullUrl);
 };
-
-// http://localhost:5000/sso/auth/authenticate?app_id=63ac989b3a899011c0b2b0be&redirect_url=https://localhost:3000/auth/success&from_url=https://localhost:3000/auth/login&failed_url=https://localhost:3000/auth/failed&secure_hash=$2a$10$R94UJRhniVMJwUohWA1JUeb22FDGJ4gz5I89DnRM2pXlbXDYDIs8a
