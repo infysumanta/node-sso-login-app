@@ -44,7 +44,9 @@ passportInit(passport);
 app.use((req, res, next) => {
   res.locals.session = req.session;
   res.locals.user = req.user;
-  res.locals.user.fullname = req.user.firstName + " " + req.user.lastName;
+  if (req.user) {
+    res.locals.user.fullname = req.user.firstName + " " + req.user.lastName;
+  }
   next();
 });
 
