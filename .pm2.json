@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "SSO_Auth_Login_Application",
+            "script": "npm",
+            "args": "start"
+        }
+    ]
+}
