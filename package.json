@@ -22,7 +22,6 @@
   "homepage": "https://github.com/infysumanta/node-sso-login-app#readme",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
-    "axios": "^1.2.1",
     "clientjs": "^0.2.1",
     "concurrently": "^7.6.0",
     "copy-to-clipboard": "^3.3.3",
@@ -34,6 +33,7 @@
     "sass-loader": "^13.2.0"
   },
   "dependencies": {
+    "axios": "^1.2.1",
     "bcryptjs": "2.4.3",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
